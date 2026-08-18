@@ -7,25 +7,3 @@ Detalle completo del problema, stakeholders y alcance: consultar la sección Vis
 
 Para la realización de este proyecto se usara un modelo de ciclo de vida **incremental e iterativo** (es decir, una fusión de ambos). El enfoque incremental permite dividir el proyecto en partes mas manejables, entregando una porción funcional de valor desde una etapa temprana, en este caso, sera enfocada en la trazabilidad del docking molecular. Ademas de esto tomaremos un enfoque iterativo para revisar y ajustar la precisión de los metadatos almacenados en cada ciclo. Esto apoyará a la evolucionalidad del software, dejando la arquitectura preparada para la futura integración de incrementos mayores, enfocados en otros tipos de ensayos (Ej. dinámicas moleculares, ensamblados, etc.)
 
-```mermaid
-flowchart TD
-    %% Sistema Central
-    P((0<br/>Gestionar Catálogo<br/>de Experimentos))
-    
-    %% Entidades Externas
-    INV[Investigador / Becario]
-    DIR[Director del Grupo]
-    GDOCS[Google Docs]
-
-    %% Interacciones del Investigador
-    INV -->|parámetros de docking y archivo PDB| P
-    P -->|vista 3D y confirmación de carga| INV
-    
-    %% Interacciones del Director
-    DIR -->|criterios de filtro y búsqueda| P
-    P -->|historial de experimentos| DIR
-    
-    %% Interacción con el sistema externo
-    P -->|metadatos del experimento| GDOCS
-    GDOCS -->|enlace a la bitácora creada| P
-```
