@@ -22,6 +22,7 @@ Si el sistema funciona, nadie repite un experimento ya realizado sin saberlo, no
 * Detección de posible duplicado (mismo tipo + misma molécula/ligando ya cargado antes).
 * Visor 3D de solo lectura de la pose resultante (vía 3Dmol.js u otra librería equivalente), sin cálculo ni análisis adicional.
 * Vínculo con Google Docs: crear/asociar un documento de notas por experimento.
+
 *Afuera del sistema*
 * Dinámica molecular y BLAST/ensamblados. --> Quedan como extensión futura, no en esta entrega.
 * Reproducción de trayectorias completas de MD (múltiples frames). --> Solo pose estática.
@@ -34,3 +35,27 @@ El más probable en nuestro caso es el cambio de requerimientos. Si el modelo de
 
 ### **Datos Sensibles**
 Los metadatos de experimentos no son datos clínicos ni biológicos de una persona — son datos de investigación (moléculas, parámetros, resultados). El único dato mínimamente personal es el nombre del autor de cada experimento (miembro del propio grupo), que no cae dentro de las categorías que exige proteger el Código de Ética IEEE/ACM (no es dato de salud, no es identificable de un tercero ajeno al proyecto).
+
+
+# **DFD nivel 0**
+
+flowchart TD
+    %% Sistema Central
+    P((0<br/>Gestionar Catálogo<br/>de Experimentos))
+    
+    %% Entidades Externas
+    INV[Investigador / Becario]
+    DIR[Director del Grupo]
+    GDOCS[Google Docs]
+
+    %% Interacciones del Investigador
+    INV -->|parámetros de docking y archivo PDB| P
+    P -->|vista 3D y confirmación de carga| INV
+    
+    %% Interacciones del Director
+    DIR -->|criterios de filtro y búsqueda| P
+    P -->|historial de experimentos| DIR
+    
+    %% Interacción con el sistema externo
+    P -->|metadatos del experimento| GDOCS
+    GDOCS -->|enlace a la bitácora creada| P
