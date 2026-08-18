@@ -39,6 +39,7 @@ Los metadatos de experimentos no son datos clínicos ni biológicos de una perso
 
 # **DFD nivel 0**
 
+```mermaid
 flowchart TD
     %% Sistema Central
     P((0<br/>Gestionar Catálogo<br/>de Experimentos))
@@ -59,3 +60,4 @@ flowchart TD
     %% Interacción con el sistema externo
     P -->|metadatos del experimento| GDOCS
     GDOCS -->|enlace a la bitácora creada| P
+```
